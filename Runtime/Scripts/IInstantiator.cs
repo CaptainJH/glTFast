@@ -123,5 +123,7 @@ namespace GLTFast {
             ,AnimationClip[] animationClips
 #endif
             );
+
+        void AddBoxCollider(uint nodeIndex, Schema.BoxColliderData bc);
     }
 }

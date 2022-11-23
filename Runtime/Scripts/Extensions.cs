@@ -24,6 +24,7 @@ namespace GLTFast {
         MeshQuantization,
         TextureBasisUniversal,
         TextureTransform,
+        BoxCollider
     }
     
     /// <summary>
@@ -67,6 +68,8 @@ namespace GLTFast {
         /// </summary>
         public const string TextureTransform = "KHR_texture_transform";
 
+        public const string BoxCollider = "JHQ_box_collider";
+
         /// <summary>
         /// Returns the official name of the glTF extension
         /// </summary>
@@ -90,6 +93,8 @@ namespace GLTFast {
                     return TextureBasisUniversal;
                 case Extension.TextureTransform:
                     return TextureTransform;
+                case Extension.BoxCollider:
+                    return BoxCollider;
                 default:
                     return null;
             }

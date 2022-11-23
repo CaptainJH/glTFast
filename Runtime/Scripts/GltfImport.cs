@@ -107,6 +107,7 @@ namespace GLTFast {
             Extensions.MeshQuantization,
             Extensions.MaterialsTransmission,
             Extensions.MeshGPUInstancing,
+            Extensions.BoxCollider,
         };
 
         static IDeferAgent defaultDeferAgent;
@@ -1908,6 +1909,14 @@ namespace GLTFast {
                     )
                 {
                     instantiator.AddCamera(nodeIndex,(uint)node.camera);
+                }
+
+                if (node.extensions != null)
+                {
+                    if (node.extensions.EXT_box_collider != null)
+                    {
+                        instantiator.AddBoxCollider(nodeIndex, node.extensions.EXT_box_collider);
+                    }
                 }
             }
             

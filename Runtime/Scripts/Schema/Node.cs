@@ -112,15 +112,24 @@ namespace GLTFast.Schema {
     [System.Serializable]
     public class NodeExtensions {
         public MeshGpuInstancing EXT_mesh_gpu_instancing;
+        public BoxColliderData EXT_box_collider;
         // Whenever an extension is added, the JsonParser
         // (specifically step four of JsonParser.ParseJson)
         // needs to be updated!
 
         public void GltfSerialize(JsonWriter writer) {
+            writer.AddProperty("extensions");
+            writer.AddObject();
             if (EXT_mesh_gpu_instancing != null) {
                 writer.AddProperty("EXT_mesh_gpu_instancing");
                 EXT_mesh_gpu_instancing.GltfSerialize(writer);
             }
+            if (EXT_box_collider != null)
+            {
+                writer.AddProperty("EXT_box_collider");
+                EXT_box_collider.GltfSerialize(writer);
+            }
+            writer.Close();
         }
     }
 }

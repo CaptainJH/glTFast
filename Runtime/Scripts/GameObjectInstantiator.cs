@@ -405,5 +405,14 @@ namespace GLTFast {
             }
 #endif // UNITY_ANIMATION
         }
+
+        public virtual void AddBoxCollider(uint nodeIndex, Schema.BoxColliderData bcInfo)
+        {
+            var meshGo = nodes[nodeIndex];
+            var bc = meshGo.AddComponent<BoxCollider>();
+            bc.center = bcInfo.attributes.Center;
+            bc.size = bcInfo.attributes.Size;
+        }
+
     }
 }

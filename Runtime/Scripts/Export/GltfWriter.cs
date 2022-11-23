@@ -176,6 +176,21 @@ namespace GLTFast.Export {
             node.mesh = AddMesh(uMesh);
         }
 
+        public void AddBoxColliderToNode(int nodeId, [NotNull] UnityEngine.BoxCollider uBox)
+        {
+            CertifyNotDisposed();
+            var node = m_Nodes[nodeId];
+
+            if (node.extensions == null)
+            {
+                node.extensions = new NodeExtensions();
+                node.extensions.EXT_box_collider = new BoxColliderData();
+            }
+            this.RegisterExtensionUsage(Extension.BoxCollider);
+            node.extensions.EXT_box_collider.attributes.Center = uBox.center;
+            node.extensions.EXT_box_collider.attributes.Size = uBox.size;
+        }
+
         /// <summary>
         /// Adds a scene to the glTF
         /// </summary>

@@ -173,6 +173,12 @@ namespace GLTFast.Export {
             if (mesh != null) {
                 m_Writer.AddMeshToNode(nodeId,mesh,materialIds);
             }
+
+            if (gameObject.TryGetComponent<BoxCollider>(out BoxCollider boxCollider))
+            {
+                m_Writer.AddBoxColliderToNode(nodeId, boxCollider);
+            }
+
             return success;
         }
     }
